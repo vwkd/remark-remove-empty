@@ -13,7 +13,7 @@ interface Options {
  */
 const remarkRemoveEmpty: Plugin<[Options], Root> = (args) => {
   if (!args) {
-    throw new Error(`Missing arguments.`);
+    throw new Error(`remark-remove-empty: missing arguments.`);
   }
 
   const { nodeTest } = args;
