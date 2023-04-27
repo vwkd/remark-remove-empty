@@ -13,6 +13,7 @@
       "rehype-remark": "rehype-remark@9.1.2",
       "remark-stringify": "remark-stringify@10.0.2",
       "unified": "unified@10.1.2",
+      "unist-util-is": "unist-util-is@5.2.1",
       "unist-util-remove": "unist-util-remove@3.1.1"
     },
     "packages": {

@@ -10,7 +10,11 @@ import remarkRemoveEmpty from "./main.ts";
 const pipeline = unified()
   .use(rehypeParse, { fragment: true })
   .use(rehypeRemark)
-  .use(remarkRemoveEmpty)
+  .use(remarkRemoveEmpty, {
+    nodeTest: (node) =>
+      ["emphasis", "link", "strong"].includes(node.type) &&
+      node.children.length == 0,
+  })
   .use(remarkStringify, {
     bullet: "-",
     emphasis: "_",

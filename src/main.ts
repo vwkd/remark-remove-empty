@@ -1,7 +1,9 @@
 import { remove } from "../deps.ts";
-import type { Plugin, Root } from "../deps.ts";
+import type { Plugin, Root, Test } from "../deps.ts";
 
-const NODES = ["emphasis", "link", "strong"];
+interface Options {
+  nodeTest: Test;
+}
 
 /**
  * Removes empty inline nodes
@@ -9,13 +11,15 @@ const NODES = ["emphasis", "link", "strong"];
  * Return previous index to traverse node again in case there are
  * more sibling nodes to merge with
  */
-const remarkRemoveEmpty: Plugin<[], Root> = () => {
+const remarkRemoveEmpty: Plugin<[Options], Root> = (args) => {
+  if (!args) {
+    throw new Error(`Missing arguments.`);
+  }
+
+  const { nodeTest } = args;
+
   return (tree) => {
-    remove(tree, (node) => {
-      if (NODES.includes(node.type) && node.children.length == 0) {
-        return true;
-      }
-    });
+    remove(tree, nodeTest);
   };
 };
 

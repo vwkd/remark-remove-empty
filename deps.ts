@@ -8,3 +8,4 @@ export { default as remarkStringify } from "npm:remark-stringify";
 export { remove } from "npm:unist-util-remove";
 export type { Plugin } from "npm:unified";
 export type { Root } from "npm:@types/mdast";
+export type { Test } from "npm:unist-util-is";
